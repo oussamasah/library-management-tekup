@@ -34,7 +34,7 @@ export class BookService {
     searchBook(string: String): Book[] {
         let serched = []
         for (let b of this.books) {
-            if (b.editor.toLocaleLowerCase().includes(string.toLocaleLowerCase()) || b.title.toLocaleLowerCase().includes(string.toLocaleLowerCase()) || b.author.toLocaleLowerCase().includes(string.toLocaleLowerCase())) {
+            if (b.publishedAt.toLocaleLowerCase().includes(string.toLocaleLowerCase()) ||b.editor.toLocaleLowerCase().includes(string.toLocaleLowerCase()) || b.title.toLocaleLowerCase().includes(string.toLocaleLowerCase()) || b.author.toLocaleLowerCase().includes(string.toLocaleLowerCase())) {
                 serched.push(b);
             }
         }

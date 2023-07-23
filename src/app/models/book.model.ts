@@ -5,5 +5,5 @@ export interface Book {
     title: string; // Title of a book
     author: string; // Author of a book
     editor: string; // Editor of a book
-    publishedAt: Date; // date of publish
+    publishedAt: string; // date of publish
   }
