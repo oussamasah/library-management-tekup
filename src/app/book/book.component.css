@@ -1,0 +1,48 @@
+/* src/app/book/book.component.css */
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  h1,
+  h2 {
+    text-align: center;
+  }
+  
+  .form-container {
+    margin-bottom: 20px;
+  }
+  
+  .form-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-container label,
+  .form-container input,
+  .form-container button {
+    margin: 5px 0;
+  }
+  
+  .list-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .list-container li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px 0;
+  }
+  
+  .list-container button {
+    margin-left: 10px;
+  }
+  td{
+    width:20%;
+  }

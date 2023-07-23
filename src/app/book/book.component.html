@@ -1,0 +1,88 @@
+<!-- src/app/book/book.component.html -->
+
+<div class="container-md">
+    <h1 class="text-center">Library Management</h1>
+  
+    <!-- Add Book Form -->
+    <div class="form-container">
+    
+      <div class="d-flex justify-content-between align-items-end">
+        <div class="form-group">
+            <label for="title">Search for a book :</label>
+            <input type="text" id="title" name="search" [(ngModel)]="searchQuery" (input)="search()" required class="form-control">
+          </div>
+      <button class="btn btn-success add-button" (click)="openAddBookModal(addBookModal)">Add New Book</button>
+
+    </div>
+    <hr>
+      <!-- The modal starts here -->
+      <ng-template #addBookModal let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" *ngIf="selectedBook.id == 0" >Add Book</h4>
+          <h4 class="modal-title" *ngIf="selectedBook.id > 0" >Edit Book of ID : {{selectedBook.id}}</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form  (submit)="submitForm(newBookForm.value); modal.close()" #newBookForm="ngForm">
+            <input type="hidden" id="id" name="id" [(ngModel)]="selectedBook.id" required class="form-control">
+          
+            <div class="form-group">
+              <label for="title">Title:</label>
+              <input type="text" id="title" name="title" [(ngModel)]="selectedBook.title" required class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="author">Author:</label>
+              <input type="text" id="author" name="author" [(ngModel)]="selectedBook.author" required class="form-control">
+            </div>
+            <div class="form-group text-center mt-3 d-flex justify-content-between align-items-end">
+              <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancel</button>
+
+              <button type="submit" class="btn btn-primary" *ngIf="selectedBook.id == 0" [disabled]="!newBookForm.valid">Add</button>
+             
+              <button type="submit" class="btn btn-primary" *ngIf="selectedBook.id > 0" [disabled]="!newBookForm.valid">Edit</button>
+            </div>
+          </form>
+        </div>
+      </ng-template>
+      <!-- The modal ends here -->
+    </div>
+  
+    <!-- Book List -->
+    <div class="list-container">
+      <h2>List of available books</h2>
+
+      <div class="alert alert-warning" role="alert" *ngIf="books.length == 0">
+       No book available! please add new book
+      </div>
+      <table class="table table-bordered table-hover" *ngIf="books.length > 0">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Actions</th>
+        
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of books">
+            <td class="fw-bold">#{{ book.id }}</td>
+            <td class="fw-bold">{{ book.title }}</td>
+            <td class="text-muted">by {{ book.author }}</td>
+            <td>
+                <button class="btn btn-primary" (click)="openEditBookModal(addBookModal,book)">Edit</button>
+       
+              <button class="btn btn-danger" (click)="deleteBook(book.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  
+  
+  
+  
