@@ -13,7 +13,7 @@ import { BookService } from '../services/book.service';
 export class BookComponent implements OnInit {
 
   books: Book[] = [];
-  selectedBook: Book = { id: 0, title: '', author: '' }; // Initialize selectedBook with an empty object
+  selectedBook: Book = { id: 0, title: '', author: '', editor: '', publishedAt:new Date("Y-m-d") };// Initialize selectedBook with an empty object
   searchQuery: string = '';
 
   // implement book service and modal service
@@ -70,7 +70,7 @@ export class BookComponent implements OnInit {
       // ... (your delete logic here)
       this.bookService.deleteBook(id);
       this.getAllBooks();
-      this.selectedBook = { id: 0, title: '', author: '' };
+      this.selectedBook = { id: 0, title: '', author: '', editor: '', publishedAt:new Date("Y-m-d") };
     } 
 
   }
@@ -82,7 +82,8 @@ export class BookComponent implements OnInit {
 
   openAddBookModal(content: any): void {
       // set the selected book null
-    this.selectedBook = { id: 0, title: '', author: '' };
+    this.selectedBook =    { id: 0, title: '', author: '', editor: '', publishedAt:new Date("Y-m-d") };
+
       // open modal
     this.modalService.open(content, { centered: true, size: 'md' });
   }

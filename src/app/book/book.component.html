@@ -36,6 +36,14 @@
               <label for="author">Author:</label>
               <input type="text" id="author" name="author" [(ngModel)]="selectedBook.author" required class="form-control">
             </div>
+            <div class="form-group">
+              <label for="editor">Editor:</label>
+              <input type="text" id="editor" name="editor" [(ngModel)]="selectedBook.editor" required class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="Publish">publish date:</label>
+              <input type="date" id="publish" name="publish" [(ngModel)]="selectedBook.publish" required class="form-control">
+            </div>
             <div class="form-group text-center mt-3 d-flex justify-content-between align-items-end">
               <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancel</button>
 
@@ -62,6 +70,8 @@
             <th>ID</th>
             <th>Title</th>
             <th>Author</th>
+            <th>Editor</th>
+            <th>published At :</th>
             <th>Actions</th>
         
           </tr>
@@ -71,6 +81,8 @@
             <td class="fw-bold">#{{ book.id }}</td>
             <td class="fw-bold">{{ book.title }}</td>
             <td class="text-muted">by {{ book.author }}</td>
+            <td class="text-muted">by {{ book.editor }}</td>
+            <td class="text-muted">by {{ book.publishedAt | date }}</td>
             <td>
                 <button class="btn btn-primary" (click)="openEditBookModal(addBookModal,book)">Edit</button>
        
